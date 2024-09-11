@@ -1,0 +1,17 @@
+{
+  "name": "axe-checker",
+  "version": "1.0.0",
+  "description": "Runs Axe a11y checker on a given list of URLs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+      "start": "node index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+  "author": "Mark Conroy",
+  "license": "ISC",
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "puppeteer": "^23.3.0"
+  }
+}

@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  color: #095dff;
+}
+
+header,
+main,
+footer {
+  padding: 2rem;
+}
+
+a {
+  color: #095dff;
+}
+
+h2 ~ h2 {
+  margin-block-start: 2rem;
+  padding-block-start: 2rem;
+  border-top: 1px solid #095dff;
+}
+
+.bg {
+  background-color: #095dff;
+  color: #ffffff;
+}
+
+.bg a {
+  color: #ffffff;
+}
