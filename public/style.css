@@ -1,3 +1,13 @@
+:root {
+  --color-primary: #095dff;
+  --color-white: #ffffff;
+  --spacing: 1rem;
+  --color-grey-lightest: #f2f2f2;
+  --color-black: #000000;
+  --transition-time: 0.3s;
+  --border: 1px solid var(--color-primary);
+}
+
 *,
 *::before,
 *::after {
@@ -12,7 +22,7 @@ body {
   margin: 0;
   line-height: 1.5;
   font-family: Arial, sans-serif;
-  color: #095dff;
+  color: var(--color-black);
 }
 
 header,
@@ -22,20 +32,90 @@ footer {
 }
 
 a {
-  color: #095dff;
+  color: var(--color-primary);
+}
+a:hover,
+a:focus-visible {
+  text-decoration: none;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition: var(--transition-time);
 }
 
 h2 ~ h2 {
   margin-block-start: 2rem;
   padding-block-start: 2rem;
-  border-top: 1px solid #095dff;
+  border-top: 1px solid var(--color-primary);
 }
 
 .bg {
-  background-color: #095dff;
+  background-color: var(--color-primary);
   color: #ffffff;
 }
 
 .bg a {
   color: #ffffff;
+}
+
+.impact {
+  padding: 0.15rem;
+  border: var(--border);
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+.impact--minor {
+  background-color: #f3ea00;
+}
+.impact--moderate {
+  background-color: #d4cd00;
+}
+.impact--serious {
+  background-color: #c86e00;
+  color: var(--color-white);
+}
+.impact--critical {
+  color: var(--color-white);
+  background-color: #dc0000;
+}
+
+dialog::backdrop {
+  background-color: var(--color-primary);
+  opacity: 0.9;
+}
+
+button {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: var(--border);
+}
+button:focus-visible,
+button:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.violations {
+  padding: 1rem;
+  background-color: var(--color-grey-lightest);
+  border: var(--border);
+}
+
+.violations__list > li {
+  margin-block-end: 1rem;
+}
+.violations__list > li li {
+  margin-block-start: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing);
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
