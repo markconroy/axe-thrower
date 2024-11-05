@@ -75,7 +75,7 @@ h2 ~ h2 {
   background-color: #d4cd00;
 }
 .impact--serious {
-  background-color: #c86e00;
+  background-color: #b36200;
   color: var(--color-white);
 }
 .impact--critical {
@@ -86,6 +86,44 @@ h2 ~ h2 {
 dialog::backdrop {
   background-color: var(--color-primary);
   opacity: 0.9;
+}
+
+dialog {
+  width: 90%;
+  height: 90%;
+  max-width: 900px;
+  max-height: 600px;
+  padding: 2rem;
+  background-color: var(--color-white);
+  border: var(--border);
+}
+
+.dialog-violations__close {
+  display: block;
+  margin-inline-start: auto;
+}
+
+.dialog-violations__title {
+  margin-block-start: 2rem;
+  padding-block-start: 1rem;
+  border-block-start: var(--border);
+}
+
+.dialog-violations__list {
+  padding-block-start: 2rem;
+  margin-block-start: 2rem;
+  border-block-start: var(--border);
+}
+
+.dialog-violations__list > li {
+  margin-block-end: 2rem;
+  padding-block-end: 2rem;
+  border-bottom: var(--border);
+}
+
+.dialog-violations__list > li li {
+  list-style-type: disc;
+  margin-block-start: 0.5rem;
 }
 
 button {

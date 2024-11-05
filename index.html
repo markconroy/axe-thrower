@@ -23,9 +23,30 @@
     <p>Created by Mark Conroy & Big Blue Door</p>
   </footer>
   <dialog class="dialog-violations">
-    <button class="dialog-close">Close</button>
-    <h2 class="dialog-violations__title"></h2>
-    <ol class="dialog-violations__list"></ol>
+    <button class="dialog-violations__close">Close</button>
+    <div class="dialog-violations__title">
+
+      <h2>2 Landmark Unique Violations</h2>
+      <p>URL: <a href="https://www.cnn.com/">https://www.cnn.com/</a></p>
+
+    </div>
+    <ol class="dialog-violations__list">
+      <li>
+        <ul>
+          <li><strong>HTML:</strong> <code>&lt;nav data-uri="cms.cnn.com/_components/header/instances/cnn-v2@published" id="pageHeader" data-editable="settings" class="header cnn-app-display-none" data-analytics-aggregate-events="true"&gt;</code></li>
+          <li><strong>Target:</strong> #pageHeader</li>
+          <li><strong>Summary:</strong> Fix any of the following:
+The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable</li>
+        </ul>
+      </li><li>
+        <ul>
+          <li><strong>HTML:</strong> <code>&lt;nav class="user-account-nav user-account-nav--unauth" data-uri="cms.cnn.com/_components/user-account-nav/instances/user-account-nav@published" data-editable="settings" data-one-tap-enabled="false" data-one-tap-enabled-mw="false" aria-label="User Account Nav" data-avatar-enabled="false" tabindex="0" style="visibility: visible;"&gt;</code></li>
+          <li><strong>Target:</strong> #desktop-header-account-nav &gt; .user-account-nav.user-account-nav--unauth[data-one-tap-enabled="false"]</li>
+          <li><strong>Summary:</strong> Fix any of the following:
+The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable</li>
+        </ul>
+      </li>
+    </ol>
   </dialog>
   <script src="public/script.js"></script>
 </body>
