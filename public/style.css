@@ -62,6 +62,30 @@ h2 ~ h2 {
   color: #ffffff;
 }
 
+header nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+header.bg nav a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+}
+header.bg nav a:hover,
+header.bg nav a:focus-visible {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-white);
+  transform: scale(1.01);
+}
+
 .impact {
   padding: 0.15rem;
   border: var(--border);
@@ -140,7 +164,10 @@ button:hover {
 }
 
 .violations {
+  width: 100%;
+  aspect-ratio: 1;
   padding: 1rem;
+  overflow: auto;
   background-color: var(--color-grey-lightest);
   border: var(--border);
 }

@@ -83,6 +83,7 @@ violations.then(data => {
       `).join('')}
     </ul>
 
+    <h3>URLs with Violations</h3>
     <ul>
       ${uniqueURLsWithViolations.map(url => `
         <li>
