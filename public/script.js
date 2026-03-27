@@ -25,11 +25,29 @@ const escapeHtml = (unsafe) => {
 };
 
 const violations = fetch('violations.json').then(response => response.json());
+const urls = fetch('urls.json').then(response => response.json());
 
-violations.then(data => {
+const normalizeUrls = (data) => {
+  if (Array.isArray(data)) {
+    return data
+      .map(item => typeof item === 'string' ? item : item?.url)
+      .filter(Boolean);
+  }
+
+  if (Array.isArray(data?.urls)) {
+    return data.urls
+      .map(item => typeof item === 'string' ? item : item?.url)
+      .filter(Boolean);
+  }
+
+  return [];
+};
+
+Promise.all([violations, urls]).then(([data, urlsData]) => {
   const numberOfURLsTested = data.numberOfURLsTested;
   const allViolations = data.violations;
   const numberOfViolations = allViolations.length;
+  const allTestedURLs = normalizeUrls(urlsData);
 
   // Group violations by type
   const violationsByType = allViolations.reduce((acc, violation) => {
@@ -49,6 +67,7 @@ violations.then(data => {
 
   // Get unique URLs with violations
   const uniqueURLsWithViolations = [...new Set(allViolations.map(violation => violation.url))];
+  const uniqueURLsWithoutViolations = allTestedURLs.filter(url => !uniqueURLsWithViolations.includes(url));
 
   // Count the number of issues for each impact level
   const impactCounts = allViolations.reduce((acc, violation) => {
@@ -65,6 +84,7 @@ violations.then(data => {
     <h2 id="summary">Summary</h2>
     <h3>URLs with violations</h3>
     <p>We tested <strong>${numberOfURLsTested} URLs</strong> and found <strong>${uniqueURLsWithViolations.length} URLs</strong> with accessibility violations <strong>(${(uniqueURLsWithViolations.length / numberOfURLsTested * 100).toFixed(2)}%</strong> of URLs).</p>
+    <p><strong>${uniqueURLsWithoutViolations.length} URLs</strong> had no accessibility violations <strong>(${(uniqueURLsWithoutViolations.length / numberOfURLsTested * 100).toFixed(2)}%</strong> of URLs).</p>
     <p>The total number of violations found was <strong>${numberOfViolations}</strong></p>
 
     <h3>Issues by Impact</h3>
@@ -86,6 +106,15 @@ violations.then(data => {
     <h3>URLs with Violations</h3>
     <ul>
       ${uniqueURLsWithViolations.map(url => `
+        <li>
+          <a href="${url}">${url}</a>
+        </li>
+      `).join('')}
+    </ul>
+
+    <h3>URLs without Violations</h3>
+    <ul>
+      ${uniqueURLsWithoutViolations.map(url => `
         <li>
           <a href="${url}">${url}</a>
         </li>
